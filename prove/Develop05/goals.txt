@@ -1,0 +1,7 @@
+330
+SimpleGoal:Get off work on time.|Leave before 4PM|30|True
+EternalGoal:Read Scriptures|Study the scriptures for at least 20 minutes.|25
+ChecklistGoal:Go to the temple|Visit the temple 10 times|50|500|10|2
+SimpleGoal:Help others|Help my teammates with their assignments.|100|True
+SimpleGoal:Test my project|Test to ensure saving works correctly in all circumstances.|50|True
+EternalGoal:Pray|Pray every day.|25
