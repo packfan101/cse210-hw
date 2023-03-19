@@ -1,0 +1,5 @@
+140
+SimpleGoal:finish sunday school lesson|get lesson ready to teach the youth|50|True
+EternalGoal:pray|pray at least once every day|20
+ChecklistGoal:visit the temple|Go to the temple to spend at least an hour|50|500|10|1
+SimpleGoal:go to bed|go to bed on time and get at least 7 hours of sleep|40|True

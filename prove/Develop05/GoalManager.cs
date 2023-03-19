@@ -58,96 +58,60 @@ public class GoalManager {
     }
 
     private void CreateSimpleGoal(){
-        Console.Write("What is the name of your goal? ");
-        string name = Console.ReadLine();
-
-        Console.Write("What is a short description of your goal? ");
-        string description = Console.ReadLine();
-
-        Console.Write("What is the amount of points associated with this goal? ");
-        int points;
-        string input = Console.ReadLine();
-        bool isDigit = int.TryParse(input, out points);
-
-        SimpleGoal simpleGoal = new SimpleGoal(name, description, points);
+        SimpleGoal simpleGoal = new SimpleGoal("", "", 0);
         _goals.Add(simpleGoal);
     }
 
     private void CreateEternalGoal(){
-        Console.Write("What is the name of your goal? ");
-        string name = Console.ReadLine();
-
-        Console.Write("What is a short description of your goal? ");
-        string description = Console.ReadLine();
-
-        Console.Write("What is the amount of points associated with this goal? ");
-        string input = Console.ReadLine();
-        int points;
-        bool isDigit = int.TryParse(input, out points);
-
-        EternalGoal eternalGoal = new EternalGoal(name, description, points);
+        EternalGoal eternalGoal = new EternalGoal("", "", 0);
         _goals.Add(eternalGoal);
     }
 
     private void CreateChecklistGoal(){
-        Console.Write("What is the name of your goal? ");
-        string name = Console.ReadLine();
-
-        Console.Write("What is a short description of your goal? ");
-        string description = Console.ReadLine();
-
-        Console.Write("What is the amount of points associated with this goal? ");
-        string input = Console.ReadLine();
-        int points;
-        bool isDigit = int.TryParse(input, out points);
-
-        Console.Write("How many times does this goal need to be accomplished for a bonus? ");
-        string input2 = Console.ReadLine();
-        int quantityDesired;
-        bool isDigit2 = int.TryParse(input2, out quantityDesired);
-
-        Console.Write("What is the bonus for accomplishing it that many times? ");
-        string input3 = Console.ReadLine();
-        int bonusPoints;
-        bool isDigit3 = int.TryParse(input3, out bonusPoints);
-
-        ChecklistGoal checklistGoal = new ChecklistGoal(name, description, points, quantityDesired, bonusPoints);
+        ChecklistGoal checklistGoal = new ChecklistGoal("", "", 0, 0, 0);
         _goals.Add(checklistGoal);
     }
 
     public void SaveGoals(){
         Console.Write("Please enter a filename: ");
         _fileName = Console.ReadLine();
-        if (new FileInfo(_fileName).Length == 0){
+
+        if (File.Exists(_fileName)){
+            if (new FileInfo(_fileName).Length == 0){
             OverwriteFile();
-        }
-        else {
-            if (_fileName == _loadedFileName){
-                OverwriteFile();
             }
-            else{
-                Console.Write("This file is not empty. Do you want to overwrite it? (yes/no) ");
-                string overwriteResponse = Console.ReadLine();
-                
-                if (overwriteResponse == "yes"){
+            else {
+                if (_fileName == _loadedFileName){
                     OverwriteFile();
                 }
-                
-                else if (overwriteResponse == "no"){
-                    Console.Write("Would you like to add these goals to the file? (yes/no) ");
-                    string appendResponse = Console.ReadLine();
+                else{
+                    Console.Write("This file is not empty. Do you want to overwrite it? (yes/no) ");
+                    string overwriteResponse = Console.ReadLine();
                     
-                    if (appendResponse == "yes"){
-                        AppendFile();
-                        _goals.Clear();
-                        Console.WriteLine("Goal(s) and points have been appended to file. Please load the file to see the changes.");
+                    if (overwriteResponse == "yes"){
+                        OverwriteFile();
                     }
                     
-                    else{
-                        Console.WriteLine("\nFile was not saved\n");
+                    else if (overwriteResponse == "no"){
+                        Console.Write("Would you like to add these goals to the file? (yes/no) ");
+                        string appendResponse = Console.ReadLine();
+                        
+                        if (appendResponse == "yes"){
+                            AppendFile();
+                            _goals.Clear();
+                            _totalPoints = 0;
+                            Console.WriteLine("Goal(s) and points have been appended to file. Please load the file to see the changes.");
+                        }
+                        
+                        else{
+                            Console.WriteLine("\nFile was not saved\n");
+                        }
                     }
-                }
-            }  
+                }  
+            }
+        }
+        else {
+            OverwriteFile();
         }
     }
 

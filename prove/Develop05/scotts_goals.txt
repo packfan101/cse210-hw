@@ -1,0 +1,6 @@
+1180
+SimpleGoal:clean kitchen|clean the kitchen before monday when installers get here|10|False
+EternalGoal:read scriptures|read scriptures for at least 10 minutes each day|20
+ChecklistGoal:cook dinner|make a healthy meal for my family|30|100|10|2
+SimpleGoal:fix this assignment|make this save effectively|1000|True
+SimpleGoal:make the save function work right|make it save regardless of situation.|100|True
