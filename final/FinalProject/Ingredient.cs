@@ -1,7 +1,15 @@
 public class Ingredient {
+// Variables    
     private string _name;
     private string _quantity;
     private string _unitOfMeasure;
+
+// Constructors
+    public Ingredient(string name, string quantity, string unitOfMeasure){
+        _name = name;
+        _quantity = quantity;
+        _unitOfMeasure = unitOfMeasure;
+    }
 
     public Ingredient(){
         SetName();        
@@ -9,6 +17,7 @@ public class Ingredient {
         SetUnitOfMeasure();
     }
 
+// Behaviors
     public string GetIngredient(){
         return $"{_quantity} {_unitOfMeasure} {_name}";
     }
@@ -30,5 +39,13 @@ public class Ingredient {
 
     public string GetName(){
         return _name;
+    }
+
+    public string GetQuantity(){
+        return _quantity;
+    }
+    
+    public string GetUnitOfMeasure(){
+        return _unitOfMeasure;
     }
 }

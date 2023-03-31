@@ -6,14 +6,17 @@ class Program
     {
         int _selection = -1;
         RecipeManager recipeManager = new RecipeManager();
+        recipeManager.LoadCookbook();
 
-        while (_selection != 6){
+        while (_selection != 8){
+            Console.Clear();
+            Console.WriteLine($"Current Cookbook: {recipeManager.GetFileName()}\n");
             Console.WriteLine("Menu Options:");
-            string[] mainMenu = {"Create New Recipe", "Delete A Recipe", "Get a Random Recipe", "Search For Recipe", "View Recipes", "Save Recipes", "Load Recipes", "Quit"};
+            string[] mainMenu = {"Create New Recipe", "Delete A Recipe", "Get A Random Recipe", "Search For Recipe", "View Recipes", "Save Recipes", "Change Cookbook", "Quit"};
             for(int index=0; index < mainMenu.Length; index++){
                 Console.WriteLine($"{index + 1}. {mainMenu[index]}");
             }
-            Console.Write("Select a menu option: ");
+            Console.Write("Select A Menu Option: ");
             string input = Console.ReadLine();
             bool isDigit = int.TryParse(input, out _selection);
 
@@ -36,9 +39,14 @@ class Program
                 recipeManager.SaveRecipes();
             }
             else if (_selection == 7){
-                recipeManager.LoadRecipes();
+                recipeManager.ChangeCookbook();
             }
             else if (_selection == 8){
+                Console.Write("Would you like to save before exiting? (yes/no) ");
+                string response = Console.ReadLine();
+                if (response.ToLower() == "yes"){
+                    recipeManager.SaveRecipes();
+                }
                 break;
             }
             else {

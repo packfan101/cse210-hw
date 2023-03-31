@@ -1,6 +1,13 @@
 public class SmokerRecipe : Recipe {
+// Variables
     private string _pelletType;
     private string _targetTemp;
+
+// Constructors
+    public SmokerRecipe(string name, string description, string cookTime, string cookTemp, string ingredientList, string instructionList, string pelletType, string targetTemp) : base(name, description, cookTime, cookTemp, ingredientList, instructionList){
+        _pelletType = pelletType;
+        _targetTemp = targetTemp;
+    }
 
     public SmokerRecipe() : base(){
         Console.Write("What type of pellets are best for this recipe? ");
@@ -10,27 +17,17 @@ public class SmokerRecipe : Recipe {
         _targetTemp = Console.ReadLine();
     }
 
+// Behaviors
     public override void DisplayCookTemp(){
-         Console.WriteLine($"Set smoker to indirect heat bring temp up to {_cookTemp} degrees\n");
+         Console.WriteLine($"Set smoker to indirect heat bring temp up to {_cookTemp} degrees");
     }
 
-    public override void DisplayRecipe(){
-        Console.WriteLine($"\n{_name}\n");
-        Console.WriteLine($"{_description}\n");
-        Console.WriteLine($"Recommended Pellets: {_pelletType}\n");
-        Console.WriteLine($"Target food temp when done: {_targetTemp}\n");
-        Console.WriteLine($"Cook Time: {_cookTime}\n");
-        DisplayCookTemp();
-        Console.WriteLine($"Ingredients:\n");
-
-        foreach(Ingredient ingredient in _ingredients){
-            Console.WriteLine($"{ingredient.GetIngredient()}\n");
-        }
-
-        Console.WriteLine($"Instructions:\n");
-
-        foreach(Instruction step in _instructions){
-            Console.WriteLine($"{step.DisplayInstruction()}\n");
-        }
+    public override void GetTypeSpecificDetails(){
+        Console.WriteLine($"Recommended Pellets: {_pelletType}");
+        Console.WriteLine($"Target food temp when done: {_targetTemp}");
+    }
+    
+    public override string GetStringRepresentation(){
+        return $"{_name}|{_description}|{_cookTime}|{_cookTemp}|{GetIngredients()}|{GetInstructions()}|{_pelletType}|{_targetTemp}";
     }
 }

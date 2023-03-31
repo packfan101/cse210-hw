@@ -1,23 +1,31 @@
 public class Instruction {
+// Variables
     private int _stepNumber;
     private string _description;
 
+// Constructors
+    public Instruction(int stepNumber, string stepDescription){
+        _stepNumber = stepNumber;
+        _description = stepDescription;
+    }
+    
     public Instruction(int stepNumber){
-        SetStepNumber(stepNumber);
+        _stepNumber = stepNumber;
         SetDescription();
     }
 
+// Behaviors
     public void SetDescription(){
         Console.WriteLine($"What instruction would you like to give for step {_stepNumber}? ");
         _description = Console.ReadLine();
     }
 
-    public string getDescription(){
-        return _description;
+    public string GetStepNumber(){
+        return _stepNumber.ToString();
     }
 
-    public void SetStepNumber(int number){
-        _stepNumber = number;
+    public string getDescription(){
+        return _description;
     }
 
     public string DisplayInstruction(){
