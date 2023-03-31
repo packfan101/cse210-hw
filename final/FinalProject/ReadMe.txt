@@ -13,3 +13,5 @@ The program adds recipes in a specific format in the document and must be format
 For a crockpot/stove recipe: the cook temp should be what you set the crockpot/stove to: (low/medium/high).
 
 For a pressure cooker recipe: you can enter 0 for the temp or leave it blank since there is no way to set the temperature on a pressure cooker. You will be asked for a pressure setting during the recipe creation process.
+
+When the menu says to type 0 to quit/go back, you can type 0 and press enter, or you can leave it blank and hit enter. Either way will return you to the prior menu.
